@@ -19,10 +19,11 @@ function App() {
         const currentCard = <Card imageLocation={"https://picsum.photos/200/200?" + i}/>
         //currentSelects[i] = 0;
         currentCards.push(currentCard);
+        currentSelects.push(0);
         /*
         currentCard.addEventListener("click", () => {
           currentSelects[i] = 1;
-          setSelects(currentSelects);
+          setSelects(selects => [currentSelects]);
         })*/
       }
 
@@ -54,7 +55,12 @@ function App() {
       <p>Let's begin!</p>
       <div>Score: {score} Highest Score: {high}</div>
       <Cards cardsList={cards} />
-      <div className="cards">
+      
+    </div>
+  );
+
+  /*
+  <div className="cards">
         {cards[Math.floor(Math.random() * 25)]}
         {cards[Math.floor(Math.random() * 25)]}
         {cards[Math.floor(Math.random() * 25)]}
@@ -62,8 +68,7 @@ function App() {
         {cards[Math.floor(Math.random() * 25)]}
         {cards[Math.floor(Math.random() * 25)]}
       </div>
-    </div>
-  );
+  */
 }
 
 export default App;

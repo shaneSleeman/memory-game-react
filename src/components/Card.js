@@ -7,9 +7,6 @@ const Card = ({imageLocation}) => {
         const clicked = () => {
             setSelected(1);
         };
-        //const thisCard = document.querySelector(`.${imageLocation}`);
-        
-        //ref.current.addEventListener('click', clicked);
     }, [])
 
     return (

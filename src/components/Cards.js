@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from "react";
+import Card from './Card';
 
 const Cards = ({cardsList}) => {
-    let index = [];
+    const [index, addIndex] = useState([]);
+    //let index = [];
     useEffect(() => {
         // Avoid repeats, though not entirely foolproof
         for(let i = 0; i < 6; i++) {
@@ -13,9 +15,10 @@ const Cards = ({cardsList}) => {
                     isNew = true;
                 }
             }
+            addIndex(index => [...index, newIndex]);
             index.push(newIndex);
-            
         }
+        console.log(cardsList[index[0]]);
     }, [])
 
     return (
