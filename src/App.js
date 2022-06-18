@@ -7,8 +7,6 @@ import React, {useState, useEffect} from "react";
 function App() {
   const [cards, setCards] = useState([]);
   const [selects, setSelects] = useState([]);
-  //const [score, setScore] = useState(0);
-  //const [high, setHigh] = useState(0);
   const [scores, setScores] = useState({
     current: 0,
     high: 0,
@@ -22,7 +20,6 @@ function App() {
 
       for(let i = 0; i < 25; i++) {
         const currentCard = <div onClick={checkSelect}><Card classList="image" location={i} imageLocation={"https://picsum.photos/200/200?" + i}/></div>
-        //currentSelects[i] = 0;
         currentCards.push(currentCard);
         currentSelects.push(0);
       }
@@ -49,24 +46,21 @@ function App() {
 
       function checkSelect(e) {
         randomIndexes();
-        // Need to update something in Card to rerender
         let location = e.target.className;
 
         let selectsCopy = selects;
 
         if(selectsCopy[location] == 1) {
-          // Reset score and all selects
           
           for(let i = 0; i < selectsCopy.length; i++) selectsCopy[i] = 0;
-          //setSelects(empty => [reset]);
-          //getCards();
-          //setScore(0);
+
           setScores({
             current: scores.current = 0,
             high: scores.high,
           })
         }
         else {
+          
           // Increment score
           if(scores.current >= scores.high) {
             setScores({
@@ -80,13 +74,7 @@ function App() {
               high: scores.high,
             });
           }
-          
-          //setScore(score => score + 1);
-          //setHigh(high => {
-            //if(score )
-          //})
-          //console.log(score);
-          //if(score > high) setHigh(score);
+
           selectsCopy[location] = 1;
         }
 

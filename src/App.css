@@ -62,14 +62,16 @@ body {
   gap: 5px;
   padding: 0;
   margin: 0;
+  box-shadow: 5px 5px 20px black;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 25px;
 }
 
 img {
   border-radius: 20px;
+  box-shadow: 5px 5px 20px black;
 }
