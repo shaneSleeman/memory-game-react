@@ -64,8 +64,9 @@ function App() {
         else {
           // Increment score
           setScore(score => score + 1);
+          highCopy++;
           console.log(score);
-          if(score > high) setHigh(score => score);
+          setHigh(high => highCopy);
           selectsCopy[location] = 1;
         }
 
