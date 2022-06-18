@@ -9,11 +9,14 @@ function App() {
   const [selects, setSelects] = useState([]);
   const [score, setScore] = useState(0);
   const [high, setHigh] = useState(0);
+  const [indexes, setIndexes] = useState([-1,-1,-1,-1,-1,-1]);
 
   useEffect(() => {
     function getCards() {
       let currentCards = cards;
       let currentSelects = selects;
+      let scoreCopy = score;
+      let highCopy = high;
 
       for(let i = 0; i < 25; i++) {
         const currentCard = <div onClick={checkSelect}><Card location={i} imageLocation={"https://picsum.photos/200/200?" + i}/></div>
@@ -22,17 +25,38 @@ function App() {
         currentSelects.push(0);
       }
 
+      function randomIndexes() {
+        let empty = [];
+        //setIndexes(empty => empty);
+        let indexCopy = [-1, -1, -1, -1, -1, -1];
+        //console.log(indexCopy);
+        for(let i = 0; i < 6; i++) {
+          let isNew = false;
+          let newIndex;
+          while(!isNew) {
+              newIndex = Math.floor(Math.random() * 25)
+              if(!indexCopy.includes(newIndex)) {
+                  isNew = true;
+              }
+          }
+          indexCopy.push(newIndex);
+        }
+        setIndexes(empty => [indexCopy]);
+      }
+
+      randomIndexes();
+
       function checkSelect(e) {
+        randomIndexes();
+        // Need to update something in Card to rerender
         let location = e.target.className;
 
         let selectsCopy = selects;
+
         if(selectsCopy[location] == 1) {
           
-          // Reset score, set high score, and all selects
-          if(score > high) {
-            setHigh(high => score);
-          }
-
+          // Reset score and all selects
+          
           for(let i = 0; i < selectsCopy.length; i++) selectsCopy[i] = 0;
           //setSelects(empty => [reset]);
           //getCards();
@@ -42,7 +66,7 @@ function App() {
           // Increment score
           setScore(score => score + 1);
           console.log(score);
-          console.log(high);
+          if(score > high) setHigh(score => score);
           selectsCopy[location] = 1;
         }
 
@@ -64,11 +88,11 @@ function App() {
     <div className="content">
       <h1>Memory Game</h1>
       <h2>How to Play</h2>
-      <p>Select as many unique cards in a row as possible.</p>
-      <p>If you select a card that you have already selected, the score will reset.</p>
+      <p>Select as many unique photos in a row as possible.</p>
+      <p>If you select a photo that you have already selected, the score will reset.</p>
       <p>Let's begin!</p>
-      <div>Score: {score} Highest Score: {high}</div>
-      <Cards cardsList={cards} />
+      <div>Score: {score} Longest Streak: {high}</div>
+      <Cards cardsList={cards} index={indexes} />
       
     </div>
   );
