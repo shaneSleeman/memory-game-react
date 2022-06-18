@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.cards {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr 1fr;
+}

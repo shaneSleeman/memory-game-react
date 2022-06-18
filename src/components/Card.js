@@ -1,10 +1,23 @@
-import React from "react";
+import React, {useState, useEffect, useRef} from "react";
 
-const Card = ({name, imageLocation}) => {
+const Card = ({imageLocation}) => {
+    const [selected, setSelected] = useState(0);
+
+    const ref = useRef();
+
+    useEffect(() => {
+        const clicked = () => {
+            setSelected(1);
+        };
+        //const thisCard = document.querySelector(`.${imageLocation}`);
+        
+        //ref.current.addEventListener('click', clicked);
+    }, [])
+
     return (
-        <div>
-            <img src={imageLocation} alt={name}/>
-            <div>{name}</div>
+        <div className={imageLocation}>
+            <img src={imageLocation} alt="Missing"/>
+            <h1>{selected}</h1>
         </div>
     )
 }
