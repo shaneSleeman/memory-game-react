@@ -16,16 +16,20 @@ function App() {
       let currentSelects = selects;
 
       for(let i = 0; i < 25; i++) {
-        const currentCard = <Card imageLocation={"https://picsum.photos/200/200?" + i}/>
-        
+        const currentCard = <div onClick={checkSelect}><Card location={i} imageLocation={"https://picsum.photos/200/200?" + i}/></div>
         //currentSelects[i] = 0;
         currentCards.push(currentCard);
         currentSelects.push(0);
+      }
+
+      function checkSelect(e) {
+        console.log(e.target.className);
         /*
-        currentCard.addEventListener("click", () => {
-          currentSelects[i] = 1;
-          setSelects(selects => [currentSelects]);
-        })*/
+        let location;
+        for(let i = 0; i < 25; i++) {
+          if($(e.target).hasClass(`${i}`)) location = i;
+        }
+        console.log(location);*/
       }
 
       function addScore() {

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-const Card = ({imageLocation}) => {
+const Card = ({location, imageLocation}) => {
     const [selected, setSelected] = useState(0);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ const Card = ({imageLocation}) => {
 
     return (
         <div className={imageLocation}>
-            <img src={imageLocation} alt="Missing"/>
+            <img className={location} src={imageLocation} alt="Missing"/>
         </div>
     )
 }
