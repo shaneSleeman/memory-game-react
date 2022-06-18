@@ -5,16 +5,24 @@ import React, {useState, useEffect} from "react";
 
 function App() {
   const [cards, setCards] = useState([]);
+  const [selects, setSelects] = useState([]);
   const [score, setScore] = useState(0);
   const [high, setHigh] = useState(0);
 
   useEffect(() => {
     function getCards() {
-      let generatedCards = [];
+      let currentCards = cards;
+      let currentSelects = selects;
+
       for(let i = 0; i < 25; i++) {
         const currentCard = <Card imageLocation="https://picsum.photos/200/200"/>
-        
-        generatedCards.push(currentCard);
+        //currentSelects[i] = 0;
+        currentCards.push(currentCard);
+        /*
+        currentCard.addEventListener("click", () => {
+          currentSelects[i] = 1;
+          setSelects(currentSelects);
+        })*/
       }
 
       function addScore() {
@@ -25,14 +33,16 @@ function App() {
         setScore(0);
       }
 
-      function setHigh() {
+      function newHigh() {
         setHigh(score);
       }
-      //setCards(generatedCards);
+      //setSelects(currentSelects);
+      setCards(cards => [...cards, currentCards]);
+      console.log(cards);
     }
 
-    //getCards();
-  })
+    getCards();
+  }, [])
 
   return (
     <div className="content">
@@ -41,14 +51,14 @@ function App() {
       <p>Select as many unique cards in a row as possible.</p>
       <p>If you select a card that you have already selected, the score will reset.</p>
       <p>Let's begin!</p>
-      <div>Score: {score}  Highest Score: {high}</div>
+      <div>Score: {score} Highest Score: {high}</div>
       <div className="cards">
-        <Card imageLocation="https://picsum.photos/300/300" />
-        <Card imageLocation="https://picsum.photos/300/300" />
-        <Card imageLocation="https://picsum.photos/300/300" />
-        <Card imageLocation="https://picsum.photos/300/300" />
-        <Card imageLocation="https://picsum.photos/300/300" />
-        <Card imageLocation="https://picsum.photos/300/300" />
+        {cards[Math.random() * (25 - 0) + 25]}
+        {cards[Math.random() * (25 - 0) + 25]}
+        {cards[Math.random() * (25 - 0) + 25]}
+        {cards[Math.random() * (25 - 0) + 25]}
+        {cards[Math.random() * (25 - 0) + 25]}
+        {cards[Math.random() * (25 - 0) + 25]}
       </div>
     </div>
   );
