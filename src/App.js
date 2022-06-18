@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     function getCards() {
       let currentCards = cards;
-      let currentSelects = [];
+      let currentSelects = selects;
 
       for(let i = 0; i < 25; i++) {
         const currentCard = <div onClick={checkSelect}><Card location={i} imageLocation={"https://picsum.photos/200/200?" + i}/></div>
@@ -27,17 +27,22 @@ function App() {
 
         let selectsCopy = selects;
         if(selectsCopy[location] == 1) {
-          // Reset score, high score, and all selects
-          if(score > high) setHigh(score);
-          /*
-          let empty = [];
-          let reset = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-          setSelects(empty => [reset]);*/
-          getCards();
+          
+          // Reset score, set high score, and all selects
+          if(score > high) {
+            setHigh(high => score);
+          }
+
+          for(let i = 0; i < selectsCopy.length; i++) selectsCopy[i] = 0;
+          //setSelects(empty => [reset]);
+          //getCards();
           setScore(0);
         }
         else {
+          // Increment score
           setScore(score => score + 1);
+          console.log(score);
+          console.log(high);
           selectsCopy[location] = 1;
         }
 
@@ -45,17 +50,6 @@ function App() {
         setSelects(empty => [selectsCopy]);
       }
 
-      function addScore() {
-        setScore(score + 1);
-      }
-
-      function resetScore() {
-        setScore(0);
-      }
-
-      function newHigh() {
-        setHigh(score);
-      }
       //setSelects(currentSelects);
       setCards(cards => [...cards, currentCards]);
       let empty = [];
