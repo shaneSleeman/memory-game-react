@@ -1,3 +1,9 @@
+# Live Demo
+[Click Here](https://shanesleeman.github.io/memory-game/)
+
+# Description
+This is my first React project: a simple game made of a few components, using React hooks and states.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
