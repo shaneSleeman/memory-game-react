@@ -15,7 +15,7 @@ function App() {
       let currentSelects = selects;
 
       for(let i = 0; i < 25; i++) {
-        const currentCard = <Card imageLocation="https://picsum.photos/200/200"/>
+        const currentCard = <Card imageLocation={"https://picsum.photos/200/200?" + i}/>
         //currentSelects[i] = 0;
         currentCards.push(currentCard);
         /*
@@ -53,12 +53,12 @@ function App() {
       <p>Let's begin!</p>
       <div>Score: {score} Highest Score: {high}</div>
       <div className="cards">
-        {cards[Math.random() * (25 - 0) + 25]}
-        {cards[Math.random() * (25 - 0) + 25]}
-        {cards[Math.random() * (25 - 0) + 25]}
-        {cards[Math.random() * (25 - 0) + 25]}
-        {cards[Math.random() * (25 - 0) + 25]}
-        {cards[Math.random() * (25 - 0) + 25]}
+        {cards[Math.floor(Math.random() * 25)]}
+        {cards[Math.floor(Math.random() * 25)]}
+        {cards[Math.floor(Math.random() * 25)]}
+        {cards[Math.floor(Math.random() * 25)]}
+        {cards[Math.floor(Math.random() * 25)]}
+        {cards[Math.floor(Math.random() * 25)]}
       </div>
     </div>
   );
