@@ -23,6 +23,7 @@ const Cards = ({cardsList, index}) => {
     }, [])*/
 
     useEffect(() => {
+        console.log(index[1]);
         console.log(index[0][1]);
     })
 

@@ -19,7 +19,7 @@ function App() {
       let highCopy = high;
 
       for(let i = 0; i < 25; i++) {
-        const currentCard = <div onClick={checkSelect}><Card location={i} imageLocation={"https://picsum.photos/200/200?" + i}/></div>
+        const currentCard = <div onClick={checkSelect}><Card classList="image" location={i} imageLocation={"https://picsum.photos/200/200?" + i}/></div>
         //currentSelects[i] = 0;
         currentCards.push(currentCard);
         currentSelects.push(0);
@@ -27,7 +27,6 @@ function App() {
 
       function randomIndexes() {
         let empty = [];
-        //setIndexes(empty => empty);
         let indexCopy = [-1, -1, -1, -1, -1, -1];
         //console.log(indexCopy);
         for(let i = 0; i < 6; i++) {
@@ -86,12 +85,15 @@ function App() {
 
   return (
     <div className="content">
-      <h1>Memory Game</h1>
-      <h2>How to Play</h2>
-      <p>Select as many unique photos in a row as possible.</p>
-      <p>If you select a photo that you have already selected, the score will reset.</p>
-      <p>Let's begin!</p>
-      <div>Score: {score} Longest Streak: {high}</div>
+      <div className="contentText">
+        <h1>Memory Game</h1>
+        <h2>How to Play</h2>
+        <div>Select as many unique photos in a row as possible.</div>
+        <div>If you select a photo that you have already selected, the score will reset.</div>
+        <div>Let's begin!</div>
+        <p>Score: {score} Longest Streak: {high}</p>
+      </div>
+      
       <Cards cardsList={cards} index={indexes} />
       
     </div>
