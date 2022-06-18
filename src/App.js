@@ -68,10 +68,19 @@ function App() {
         }
         else {
           // Increment score
-          setScores({
-            current: scores.current += 1,
-            high: scores.high,
-          });
+          if(scores.current >= scores.high) {
+            setScores({
+              current: scores.current += 1,
+              high: scores.high += 1,
+            });
+          }
+          else {
+            setScores({
+              current: scores.current += 1,
+              high: scores.high,
+            });
+          }
+          
           //setScore(score => score + 1);
           //setHigh(high => {
             //if(score )
