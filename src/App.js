@@ -17,6 +17,7 @@ function App() {
 
       for(let i = 0; i < 25; i++) {
         const currentCard = <Card imageLocation={"https://picsum.photos/200/200?" + i}/>
+        
         //currentSelects[i] = 0;
         currentCards.push(currentCard);
         currentSelects.push(0);

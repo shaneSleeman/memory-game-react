@@ -5,7 +5,7 @@ const Cards = ({cardsList}) => {
     const [index, addIndex] = useState([]);
     //let index = [];
     useEffect(() => {
-        // Avoid repeats, though not entirely foolproof
+        // Avoid repeats
         for(let i = 0; i < 6; i++) {
             let isNew = false;
             let newIndex;
@@ -21,14 +21,18 @@ const Cards = ({cardsList}) => {
         console.log(cardsList[index[0]]);
     }, [])
 
+    function changeSelected(card) {
+        alert("clicked");
+    }
+
     return (
         <div className="cards">
-            {cardsList[index[0]]}
-            {cardsList[index[1]]}
-            {cardsList[index[2]]}
-            {cardsList[index[3]]}
-            {cardsList[index[4]]}
-            {cardsList[index[5]]}
+            <div onClick={changeSelected}>{cardsList[index[0]]}</div>
+            <div onClick={changeSelected}>{cardsList[index[1]]}</div>
+            <div onClick={changeSelected}>{cardsList[index[2]]}</div>
+            <div onClick={changeSelected}>{cardsList[index[3]]}</div>
+            <div onClick={changeSelected}>{cardsList[index[4]]}</div>
+            <div onClick={changeSelected}>{cardsList[index[5]]}</div>
         </div>
     )
 }
