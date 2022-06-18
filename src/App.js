@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Card from './components/Card';
+import Cards from './components/Cards'
 import React, {useState, useEffect} from "react";
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
       <p>If you select a card that you have already selected, the score will reset.</p>
       <p>Let's begin!</p>
       <div>Score: {score} Highest Score: {high}</div>
+      <Cards cardsList={cards} />
       <div className="cards">
         {cards[Math.floor(Math.random() * 25)]}
         {cards[Math.floor(Math.random() * 25)]}
