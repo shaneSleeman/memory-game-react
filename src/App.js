@@ -13,7 +13,7 @@ function App() {
   useEffect(() => {
     function getCards() {
       let currentCards = cards;
-      let currentSelects = selects;
+      let currentSelects = [];
 
       for(let i = 0; i < 25; i++) {
         const currentCard = <div onClick={checkSelect}><Card location={i} imageLocation={"https://picsum.photos/200/200?" + i}/></div>
@@ -23,13 +23,26 @@ function App() {
       }
 
       function checkSelect(e) {
-        console.log(e.target.className);
-        /*
-        let location;
-        for(let i = 0; i < 25; i++) {
-          if($(e.target).hasClass(`${i}`)) location = i;
+        let location = e.target.className;
+
+        let selectsCopy = selects;
+        if(selectsCopy[location] == 1) {
+          // Reset score, high score, and all selects
+          if(score > high) setHigh(score);
+          /*
+          let empty = [];
+          let reset = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+          setSelects(empty => [reset]);*/
+          getCards();
+          setScore(0);
         }
-        console.log(location);*/
+        else {
+          setScore(score => score + 1);
+          selectsCopy[location] = 1;
+        }
+
+        let empty = [];
+        setSelects(empty => [selectsCopy]);
       }
 
       function addScore() {
@@ -45,6 +58,8 @@ function App() {
       }
       //setSelects(currentSelects);
       setCards(cards => [...cards, currentCards]);
+      let empty = [];
+      setSelects(empty => currentSelects);
       console.log(cards);
     }
 
@@ -63,17 +78,6 @@ function App() {
       
     </div>
   );
-
-  /*
-  <div className="cards">
-        {cards[Math.floor(Math.random() * 25)]}
-        {cards[Math.floor(Math.random() * 25)]}
-        {cards[Math.floor(Math.random() * 25)]}
-        {cards[Math.floor(Math.random() * 25)]}
-        {cards[Math.floor(Math.random() * 25)]}
-        {cards[Math.floor(Math.random() * 25)]}
-      </div>
-  */
 }
 
 export default App;
